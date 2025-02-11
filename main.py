@@ -58,9 +58,8 @@ async def check_periodically():
             available = await fetch_course_by_crn(crn)
             if available:
                 await send_message(bot, f"Gap available for CRN {crn}! Be quick!")
-            await asyncio.sleep(1)
 
-        await asyncio.sleep(5)
+        await asyncio.sleep(300)
 
 if __name__ == "__main__":
     asyncio.run(check_periodically())
