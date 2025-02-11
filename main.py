@@ -5,7 +5,6 @@ import json
 from dotenv import load_dotenv
 import os
 
-# Load environment variables from .env file
 load_dotenv()
 
 TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -27,7 +26,7 @@ async def fetch_course_by_crn(crn):
                 capacity = ders.get("kontenjan")
                 enrolled = ders.get("ogrenciSayisi")
 
-                if capacity is not None and enrolled is not None:  # Kontrol ekle
+                if capacity is not None and enrolled is not None:
                     remaining = capacity - enrolled
                     return remaining > 0
                 else:
@@ -40,7 +39,7 @@ async def fetch_course_by_crn(crn):
         print(f"İstek hatası: {e}")
         return None
     except json.JSONDecodeError as e:
-        print(f"JSON ayrıştırma hatası: {e}. Yanıt: {response.text}") #Yanıtı da yazdır
+        print(f"JSON ayrıştırma hatası: {e}. Yanıt: {response.text}")
         return None
     except Exception as e:
         print(f"Beklenmedik bir hata oluştu: {e}")
